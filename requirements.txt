@@ -8,3 +8,4 @@ scipy==1.11.1
 einops==0.8.0
 psutil
 func_timeout
+tqdm

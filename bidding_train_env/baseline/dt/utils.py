@@ -8,6 +8,7 @@ import random
 
 import logging
 import pickle
+from tqdm.auto import tqdm
 
 # 配置日志
 logging.basicConfig(
@@ -55,7 +56,7 @@ class EpisodeReplayBuffer(Dataset):
         reward = []
         action = []
         dones = []
-        for index, row in self.trajectories.iterrows():
+        for index, row in tqdm(self.trajectories.iterrows()):
             state.append(row["state"])
             reward.append(row['reward'])
             action.append(row["action"])
