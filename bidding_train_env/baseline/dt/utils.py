@@ -56,6 +56,7 @@ class EpisodeReplayBuffer(Dataset):
         reward = []
         action = []
         dones = []
+        logging.info(f"cal traj rewards:{len(self.trajectories)}")
         for index, row in tqdm(self.trajectories.iterrows()):
             state.append(row["state"])
             reward.append(row['reward'])
