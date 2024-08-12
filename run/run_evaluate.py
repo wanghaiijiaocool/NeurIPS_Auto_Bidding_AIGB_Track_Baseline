@@ -21,7 +21,6 @@ def getScore_nips(reward, cpa, cpa_constraint):
         penalty = pow(coef, beta)
     return penalty * reward
 
-
 def run_test():
     """
     offline evaluation

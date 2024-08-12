@@ -231,7 +231,6 @@ class TemporalUnet(nn.Module):
             Conv1dBlock(dim, dim, kernel_size=kernel_size, mish=mish),
             nn.Conv1d(dim, transition_dim, 1),
         )
-
     def forward(self, x, cond, time, returns: torch.Tensor = torch.ones(1, 1), use_dropout: bool = True,
                 force_dropout: bool = False):
 
@@ -540,7 +539,7 @@ class DFUSER(nn.Module):
         self.tau = tau
         self.num_of_steps = 0
         # cuda usage
-        self.use_cuda = torch.cuda.is_available()
+        self.use_cuda = False#torch.cuda.is_available()
         if self.use_cuda:
             self.diffuser.cuda()
 
@@ -573,7 +572,6 @@ class DFUSER(nn.Module):
         self.diffuserModel_optimizer.zero_grad()
 
         return loss, (diffuse_loss, inv_loss)
-
     def forward(self, x: torch.Tensor):
         if len(list(x.shape)) < 2:
             x = torch.reshape(x, [48, self.num_of_states + 1])

@@ -27,7 +27,6 @@ class DdBiddingStrategy(BaseBiddingStrategy):
     def reset(self):
         self.remaining_budget = self.budget
         self.input = np.zeros((48, self.state_dim+1))
-
     def bidding(self, timeStepIndex, pValues, pValueSigmas, historyPValueInfo, historyBid,
                 historyAuctionResult, historyImpressionResult, historyLeastWinningCost):
         """
