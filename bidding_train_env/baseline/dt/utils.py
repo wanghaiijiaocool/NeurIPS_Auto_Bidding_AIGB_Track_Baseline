@@ -6,6 +6,17 @@ import numpy as np
 import pickle
 import random
 
+import logging
+import pickle
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s] [%(name)s] [%(filename)s(%(lineno)d)] [%(levelname)s] %(message)s"
+)
+logger = logging.getLogger(__name__)
+
+
 
 class EpisodeReplayBuffer(Dataset):
     def __init__(self, state_dim, act_dim, data_path, max_ep_len=24, scale=2000, K=20):
@@ -16,8 +27,16 @@ class EpisodeReplayBuffer(Dataset):
 
         self.state_dim = state_dim
         self.act_dim = act_dim
-        training_data = pd.read_csv(data_path)
 
+        training_data = None
+        if(isinstance(data_path,list)):
+            for dp_ in data_path:
+                logging.info(f"载入数据:{dp_}")
+                training_data_tmp = pd.read_csv(dp_)
+                training_data = pd.concat([training_data, training_data_tmp], axis=0) if training_data is not None else training_data_tmp
+        else:
+            training_data = pd.read_csv(data_path)
+        
         def safe_literal_eval(val):
             if pd.isna(val):
                 return val
