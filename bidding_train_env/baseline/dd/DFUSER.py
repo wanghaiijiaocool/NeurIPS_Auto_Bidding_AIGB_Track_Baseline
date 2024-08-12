@@ -602,10 +602,10 @@ class DFUSER(nn.Module):
         actions = actions.detach().cpu()[0]  # .cpu().data.numpy()
         return actions
 
-    def save_net(self, save_path, epi):
+    def save_net(self, save_path, epi,epoch=''):
         if not os.path.isdir(save_path):
             os.makedirs(save_path)
-        torch.save(self.diffuser.state_dict(), f'{save_path}/diffuser.pt')
+        torch.save(self.diffuser.state_dict(), f'{save_path}/diffuser{epoch}.pt')
 
     def save_model(self, save_path, epi):
         if not os.path.isdir(save_path):
