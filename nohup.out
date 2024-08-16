@@ -1,0 +1,109 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 541B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for competition-hub-registry.cn-beijing.cr.aliyuncs.com/alimama-competition/bidding-results:base
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 84B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM competition-hub-registry.cn-beijing.cr.aliyuncs.com/alimama-competition/bidding-results:base@sha256:e3bbea38e0636a330a39847e14c209785a5bc0a1db0b600e92410e10ed896965
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 3.21kB done
+#5 DONE 0.0s
+
+#6 [2/4] WORKDIR /root/biddingTrainEnv
+#6 CACHED
+
+#7 [3/4] COPY . .
+#7 DONE 0.8s
+
+#8 [4/4] RUN pip3 install --no-cache-dir -r requirements.txt
+#8 0.708 Requirement already satisfied: numpy==1.24.2 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 1)) (1.24.2)
+#8 0.710 Requirement already satisfied: pandas==2.0.3 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 2)) (2.0.3)
+#8 0.710 Requirement already satisfied: torch==1.12.0 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 3)) (1.12.0+cu113)
+#8 0.711 Requirement already satisfied: gin==0.1.006 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 4)) (0.1.6)
+#8 0.712 Requirement already satisfied: gin_config==0.5.0 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 5)) (0.5.0)
+#8 6.899 Collecting matplotlib==3.3.4
+#8 7.178   Downloading matplotlib-3.3.4-cp39-cp39-manylinux1_x86_64.whl (11.5 MB)
+#8 342.9      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.5/11.5 MB 34.8 kB/s eta 0:00:00
+#8 342.9 Requirement already satisfied: scipy==1.11.1 in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 7)) (1.11.1)
+#8 358.0 WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='pypi.org', port=443): Read timed out. (read timeout=15)")': /simple/einops/
+#8 358.3 Collecting einops==0.8.0
+#8 358.5   Downloading einops-0.8.0-py3-none-any.whl (43 kB)
+#8 360.8      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.2/43.2 kB 17.9 kB/s eta 0:00:00
+#8 360.8 Requirement already satisfied: psutil in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 9)) (6.0.0)
+#8 360.8 Requirement already satisfied: func_timeout in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 10)) (4.3.5)
+#8 360.8 Requirement already satisfied: tqdm in /usr/local/lib/python3.9/site-packages (from -r requirements.txt (line 11)) (4.66.1)
+#8 360.9 Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.9/site-packages (from pandas==2.0.3->-r requirements.txt (line 2)) (2.8.2)
+#8 360.9 Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.9/site-packages (from pandas==2.0.3->-r requirements.txt (line 2)) (2023.3)
+#8 360.9 Requirement already satisfied: tzdata>=2022.1 in /usr/local/lib/python3.9/site-packages (from pandas==2.0.3->-r requirements.txt (line 2)) (2023.3)
+#8 360.9 Requirement already satisfied: typing-extensions in /usr/local/lib/python3.9/site-packages (from torch==1.12.0->-r requirements.txt (line 3)) (4.5.0)
+#8 361.0 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /usr/local/lib/python3.9/site-packages (from matplotlib==3.3.4->-r requirements.txt (line 6)) (3.1.2)
+#8 361.0 Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.9/site-packages (from matplotlib==3.3.4->-r requirements.txt (line 6)) (1.4.5)
+#8 361.0 Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.9/site-packages (from matplotlib==3.3.4->-r requirements.txt (line 6)) (0.12.1)
+#8 361.0 Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.9/site-packages (from matplotlib==3.3.4->-r requirements.txt (line 6)) (9.4.0)
+#8 361.1 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.9/site-packages (from python-dateutil>=2.8.2->pandas==2.0.3->-r requirements.txt (line 2)) (1.16.0)
+#8 362.2 Installing collected packages: einops, matplotlib
+#8 362.2   Attempting uninstall: matplotlib
+#8 362.2     Found existing installation: matplotlib 3.9.1
+#8 362.3     Uninstalling matplotlib-3.9.1:
+#8 364.2       Successfully uninstalled matplotlib-3.9.1
+#8 365.4 Successfully installed einops-0.8.0 matplotlib-3.3.4
+#8 365.4 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#8 366.1 
+#8 366.1 [notice] A new release of pip is available: 23.0.1 -> 24.2
+#8 366.1 [notice] To update, run: pip install --upgrade pip
+#8 DONE 366.4s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 1.4s done
+#9 writing image sha256:13f9a834377197f16c1e9a6662e9119efb1fabec4dc9014258b014cf42e9071e done
+#9 naming to registry.cn-beijing.aliyuncs.com/whjleisure/ad_compete:dt_3 done
+#9 DONE 1.4s
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - UndefinedVar: Usage of undefined variable '$PYTHONPATH' (line 15)
+The push refers to repository [registry.cn-beijing.aliyuncs.com/whjleisure/ad_compete]
+d54aa28eeda9: Preparing
+5f42453efb8f: Preparing
+5f3a434fa0d2: Preparing
+40a541deeb40: Preparing
+667e704b4027: Preparing
+5f70bf18a086: Preparing
+3f0d36a7ee8e: Preparing
+8bcf6c6606cb: Preparing
+0ce72e49ead8: Preparing
+e89d473f28fc: Preparing
+2e1f75009e6c: Preparing
+422bc2be9474: Preparing
+62789ffcd78c: Preparing
+3f0d36a7ee8e: Waiting
+5f70bf18a086: Waiting
+8bcf6c6606cb: Waiting
+e89d473f28fc: Waiting
+62789ffcd78c: Waiting
+0ce72e49ead8: Waiting
+422bc2be9474: Waiting
+2e1f75009e6c: Waiting
+667e704b4027: Layer already exists
+5f3a434fa0d2: Layer already exists
+40a541deeb40: Layer already exists
+5f70bf18a086: Layer already exists
+3f0d36a7ee8e: Layer already exists
+8bcf6c6606cb: Layer already exists
+0ce72e49ead8: Layer already exists
+e89d473f28fc: Layer already exists
+2e1f75009e6c: Layer already exists
+422bc2be9474: Layer already exists
+62789ffcd78c: Layer already exists
+d54aa28eeda9: Pushed
+5f42453efb8f: Pushed
+dt_3: digest: sha256:216f4b01d4a7144fdea6e4a20f69cbdc1b0339406a0e3246578f9c16b4ce7a4a size: 3054

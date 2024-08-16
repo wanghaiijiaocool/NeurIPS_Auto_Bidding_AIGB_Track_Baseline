@@ -37,7 +37,8 @@ class EpisodeReplayBuffer(Dataset):
                 training_data = pd.concat([training_data, training_data_tmp], axis=0) if training_data is not None else training_data_tmp
         else:
             training_data = pd.read_csv(data_path)
-        
+        print(training_data.head(5))
+        #training_data = training_data.head(100000)
         def safe_literal_eval(val):
             if pd.isna(val):
                 return val
@@ -46,9 +47,9 @@ class EpisodeReplayBuffer(Dataset):
             except (ValueError, SyntaxError):
                 print(ValueError)
                 return val
-
-        training_data["state"] = training_data["state"].apply(safe_literal_eval)
-        training_data["next_state"] = training_data["next_state"].apply(safe_literal_eval)
+        tqdm.pandas()
+        training_data["state"] = training_data["state"].progress_apply(safe_literal_eval)
+        training_data["next_state"] = training_data["next_state"].progress_apply(safe_literal_eval)
         self.trajectories = training_data
 
         self.states, self.rewards, self.actions, self.returns, self.traj_lens, self.dones = [], [], [], [], [], []

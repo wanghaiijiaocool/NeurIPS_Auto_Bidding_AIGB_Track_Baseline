@@ -34,20 +34,21 @@ def train_model():
 
     model = DecisionTransformer(state_dim=state_dim, act_dim=1, state_mean=replay_buffer.state_mean,
                                 state_std=replay_buffer.state_std)
-    step_num = 10000
+    step_num = 100000
     batch_size = 32
     sampler = WeightedRandomSampler(replay_buffer.p_sample, num_samples=step_num * batch_size, replacement=True)
     dataloader = DataLoader(replay_buffer, sampler=sampler, batch_size=batch_size)
 
     model.train()
     i = 0
-    for states, actions, rewards, dones, rtg, timesteps, attention_mask in dataloader:
-        train_loss = model.step(states, actions, rewards, dones, rtg, timesteps, attention_mask)
-        i += 1
-        logger.info(f"Step: {i} Action loss: {np.mean(train_loss)}")
-        model.scheduler.step()
+    for epoch in range(1):
+        for states, actions, rewards, dones, rtg, timesteps, attention_mask in dataloader:
+            train_loss = model.step(states, actions, rewards, dones, rtg, timesteps, attention_mask)
+            i += 1
+            logger.info(f"Step: {i} Action loss: {np.mean(train_loss)}")
+            model.scheduler.step()
 
-    model.save_net("saved_model/DTtest")
+            model.save_net("saved_model/DTtest",epoch=str(epoch))
     test_state = np.ones(state_dim, dtype=np.float32)
     logger.info(f"Test action: {model.take_actions(test_state)}")
 

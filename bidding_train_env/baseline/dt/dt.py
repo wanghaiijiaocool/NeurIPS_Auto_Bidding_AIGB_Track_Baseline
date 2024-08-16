@@ -265,10 +265,10 @@ class DecisionTransformer(nn.Module):
 
         self.eval_episode_return, self.eval_episode_length = 0, 0
 
-    def save_net(self, save_path):
+    def save_net(self, save_path,epoch=""):
         if not os.path.exists(save_path):
             os.makedirs(save_path)
-        file_path = os.path.join(save_path, "dt.pt")
+        file_path = os.path.join(save_path, f"dt{epoch}.pt")
         torch.save(self.state_dict(), file_path)
 
     def save_jit(self, save_path):

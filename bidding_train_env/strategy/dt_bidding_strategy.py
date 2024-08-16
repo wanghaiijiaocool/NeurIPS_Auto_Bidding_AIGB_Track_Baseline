@@ -23,7 +23,7 @@ class DtBiddingStrategy(BaseBiddingStrategy):
         file_name = os.path.dirname(os.path.realpath(__file__))
         dir_name = os.path.dirname(file_name)
         dir_name = os.path.dirname(dir_name)
-        model_path = os.path.join(dir_name, "saved_model", "DTtest", "dt.pt")
+        model_path = os.path.join(dir_name, "saved_model", "DTtest", "dt0.pt")
         picklePath = os.path.join(dir_name, "saved_model", "DTtest", "normalize_dict.pkl")
 
         with open(picklePath, 'rb') as f:
