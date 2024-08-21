@@ -1,0 +1,1 @@
+rm -rf output.log && nohup python main/main_decision_transformer.py > output.log 2>&1 &
